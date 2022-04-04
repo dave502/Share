@@ -6,9 +6,11 @@ class TestYandex:
     def test_1(self, browser):
         yandex_main_page = YandexActions(browser)
         yandex_main_page.go_to_site()
-        yandex_main_page.get_input_box()
+        input_box = yandex_main_page.get_input_box()
+        assert input_box is not None
         yandex_main_page.enter_word("Тензор")
-        yandex_main_page.get_suggestions()
+        suggestions = yandex_main_page.get_suggestions()
+        assert suggestions is not None
         yandex_main_page.click_on_the_search_button()
         limit = 5
         links = yandex_main_page.get_search_results_links("tensor.ru", limit)
